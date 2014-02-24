@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', 'social_data.views.home', name='social-home'),
     (r'^icons/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.BASE_DIR + "/social_data/icons"}),
-    # url(r'^icons/(.*)','social_data.views.home')
+    # url(r'^icons/twitter','social_data.views.home')
     # url(r'^icons/(?P<meal_id>\d+)/$', '.views.meal', name='diary-meal'),
 )
 
