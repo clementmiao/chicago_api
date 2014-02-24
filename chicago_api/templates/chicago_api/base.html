@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Chicago Location Mapping</title>
+    </head>
+
+    <style>
+        body {
+            text-align: center;
+            /*background: url("http://www.windows7wallpapers.com/wallpapers/Minimal-Black-Wallpaper.png");*/
+            background: white;
+            color: black;
+            font-family: helvetica;
+        }
+    </style>
+    
+    <body>
+        <h1>Chicago Location Mapping</h1>
+        <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2> 
+        <div id="panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+        </div>
+        <div id="map-canvas" style="width:1700px;height:750px;"></div>
+        {%load gmap %}
+        {% gmap html_id latitude longitude zoom=zoom data=m_data map_type=map_type %}
+    </body>
+</html>
