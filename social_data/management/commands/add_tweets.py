@@ -7,5 +7,5 @@ class Command(NoArgsCommand):
 
     def handle_noargs(self, **options):
         # print "Hello World"
-        for i in range(8):
+        for i in range(20):
             twitter()
