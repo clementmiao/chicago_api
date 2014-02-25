@@ -54,7 +54,7 @@ INSTALLED_APPS = (
     'gmap',
     'chicago_api',
     'social_data',
-    'south',
+    # 'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -74,12 +74,12 @@ WSGI_APPLICATION = 'chicago_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -94,6 +94,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+# SOUTH_TESTS_MIGRATE = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -102,7 +103,10 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()
+
+DATABASES = {'default': dj_database_url.config(default='postgres://pgddcfmpztaggy:55_6JhtdTBVJWhUdE5Dxu99lyb@ec2-54-197-227-238.compute-1.amazonaws.com:5432/d3hqtt3qjo674c')}
+
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
