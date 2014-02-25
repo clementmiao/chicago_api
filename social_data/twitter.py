@@ -23,7 +23,7 @@ def twitter():
             if x.geo != None:
                 lat = x.geo["coordinates"][0]
                 lon = x.geo["coordinates"][1]  
-                find = Post.objects.filter(identifier = x.id)
+                find = Post.objects.filter(identifier = x.id, service = s)
                 if len(find) == 0:
                     post = Post(service = s, latitude = lat, longitude = lon, identifier = x.id, text = x.text, link = "", image = "", timestamp = x.created_at)
                     post.save()
