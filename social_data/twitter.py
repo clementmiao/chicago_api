@@ -14,12 +14,13 @@ api = tweepy.API(auth)
 
 def twitter():
         # print "Hello Bob"
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        try:
-            redirect_url = auth.get_authorization_url()
-        except tweepy.TweepError:
-            print 'Error! Failed to get request token.'
+        # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        # # try:
+        # #     redirect_url = auth.get_authorization_url()
+        # # except tweepy.TweepError:
+        # #     print 'Error! Failed to get request token.'
         
+        # aut.set
         
         l = api.search(geocode = "41.8954,-87.6243,60km", count = 10000)
         # list = api.home_timeline()
