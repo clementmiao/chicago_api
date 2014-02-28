@@ -8,15 +8,15 @@ consumer_key='fEwVGrkUxSaynSoQlZSEw'
 consumer_secret='EPorM8IdsG59meK5HVB80ADb6kdCkIuBWtGim5uDogc'
 access_token_key='2282396101-ij3EpglESz2RCj7dYqlNkbFap520PPy6hOgBLwR'
 access_token_secret='kOgg3N9hgWxLigi9yfIoShqrn6l3kgyvRDOiK8chtnC2M'
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token_key, access_token_secret)
-api = tweepy.API(auth)
+# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+# auth.set_access_token(access_token_key, access_token_secret)
+# api = tweepy.API(auth)
 
 def twitter():
         # print "Hello Bob"
         
         
-        l = api.search(geocode = "41.8954,-87.6243,60km", rpp = 10000)
+        l = api.search(geocode = "41.8954,-87.6243,60km", count = 10000)
         # list = api.home_timeline()
         s = Service.objects.get(name="twitter")
         for x in l:
