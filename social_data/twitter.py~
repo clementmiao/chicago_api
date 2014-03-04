@@ -1,5 +1,4 @@
-from social_data.models import Service, Post
-import tweepy
+#from social_data.models import Service, Post
 from datetime import datetime
 from slistener import SListener
 import time, sys
