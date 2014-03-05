@@ -1,16 +1,19 @@
 from social_data.models import Service, Post
-import instagram
 from instagram.client import InstagramAPI
+import get_access_token
 from datetime import datetime
-from slistener import SListeners
+from slistener import SListener
 import time, sys
 
 client_id='7fa959a59882475ba2231140f893bdf1'
 client_secret='a7b40449a691447bb440add4141ac11e'
 api = InstagramAPI(client_id = client_id, client_secret = client_secret)
 
-def insta():        
-    l = api.location_search(distance = 5000, lat = "41.8954", lng =-"87.6243", count = 1000)
+def insta():  
+    popular_media = api.media_popular(count=20)
+    for media in popular_media:
+        print media.images['standard_resolution'].url      
+    l = api.location_search(distance = 5000, lat = 41.8954, lng =-87.6243, count = 1000)
     s = Service.objects.get(name="instagram")
     for x in l:
         lat = x["latitude"]
