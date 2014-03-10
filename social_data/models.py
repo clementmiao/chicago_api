@@ -21,6 +21,13 @@ class Post(models.Model):
     def __unicode__(self):
         return "{} ({},{}) {} {} {} {}".format(self.service.name, self.latitude, self.longitude, self.text, self.link, self.image, self.timestamp)
 
+class Sentiment(models.Model):
+    post = models.ForeignKey('Post')
+    sentiment = models.CharField(max_length=64)
+
+    def __unicode__(self):
+        return "{}: {}".format(self.post.text, self.sentiment)
+
     
 
 
