@@ -1,6 +1,7 @@
 from social_data.models import Post, Service, Sentiment
 import nltk
 from os import path
+import pickle
 
 def get_list(file_name):
     BASE_DIR = path.dirname(__file__)
@@ -95,7 +96,14 @@ def process():
     return classifier
 
 def save_classifier():
-    
+    BASE_DIR = path.dirname(__file__)
+    rel_path = 'my_classifier.pickle'
+    file_path = path.join(BASE_DIR, rel_path)
+    classifier = process()
+    f = open(file_path, 'wb')
+    pickle.dump(classifier, f)
+    f.close()
+
 
 # def word_feats(words):
 #     return dict([(word, True) for word in words])
