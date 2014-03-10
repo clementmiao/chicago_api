@@ -12,6 +12,7 @@ def home(request):
         dictionary['longitude'] = p.longitude
         dictionary['title'] = p.text
         dictionary['icon'] = p.service.icon
+        dictionary['image'] = p.image
         data_list.append(dictionary)
 
     info = {

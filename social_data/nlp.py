@@ -28,6 +28,9 @@ def extract_features(document):
 
     return features
 
+def get_tweets():
+    
+
 
 def get_corpus():
     movie_reviews = nltk.corpus.movie_reviews

@@ -27,7 +27,7 @@
             heat_data = []
             {% if data %}
 
-                function createMarker(latitude, longitude, string, icon) {
+                function createMarker(latitude, longitude, string, icon, image) {
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(latitude, longitude),
                         map: map,
@@ -35,6 +35,10 @@
                         // animation: google.maps.Animation.DROP,
                     })
                     var contentString = string;
+
+                    if (image != "") {
+                        contentString = '<IMG BORDER="0" ALIGN="Left" SRC=' + image + '>' + contentString
+                    }
 
                     var infoWindow = new google.maps.InfoWindow({
                         content: contentString
@@ -47,7 +51,7 @@
 
                 {% for p in data %}
                 
-                    createMarker({{p.latitude}},{{p.longitude}}, "{{p.title|escapejs}}", "{{p.icon}}");
+                    createMarker({{p.latitude}},{{p.longitude}}, "{{p.title|escapejs}}", "{{p.icon}}", "{{p.image}}");
 
                     var item = new google.maps.LatLng({{p.latitude}}, {{p.longitude}});
                     heat_data.push(item);
