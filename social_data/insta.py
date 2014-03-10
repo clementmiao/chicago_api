@@ -19,14 +19,18 @@ def insta():
     s = Service.objects.get(name="instagram")
     for x in l:
         t = api.media(x.id)
-        #print(t.caption)
+        
+        #print(t.caption.text)
         lat =  t.location.point.latitude
         lon =  t.location.point.longitude
         #time = datetime.datetime.fromtimestamp(t.caption.created_time)  
         find = Post.objects.filter(identifier = x.id, service = s)
         if len(find) == 0:
-            post = Post(service = s, latitude = lat, longitude = lon, identifier = t.id, text = "", link = "", image = "", timestamp = t.created_time)
-            #post.save()
-            print(post)
+            try:
+                post = Post(service = s, latitude = lat, longitude = lon, identifier = t.id, text = t.caption.text, link = "", image = t.images['standard_resolution'].url, timestamp = t.created_time)
+                post.save()
+            except Exception:
+                pass
+            
 
     
