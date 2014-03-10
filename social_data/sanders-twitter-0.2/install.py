@@ -33,11 +33,11 @@ def get_user_params():
     
     # apply defaults
     if user_params['inList']  == '': 
-        user_params['inList'] = './corpus.csv'
+        user_params['inList'] = 'corpus.csv'
     if user_params['outList'] == '': 
-        user_params['outList'] = './full-corpus.csv'
+        user_params['outList'] = 'full-corpus.csv'
     if user_params['rawDir']  == '': 
-        user_params['rawDir'] = './rawdata/'
+        user_params['rawDir'] = '/rawdata/'
 
     return user_params
 
