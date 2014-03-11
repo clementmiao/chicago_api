@@ -48,11 +48,11 @@ def process():
     lines_5 = get_list('twitter_data/unigrams-pmilexicon_2.txt')
 
     # lines = lines_1 + lines_2 + lines_3 + lines_5
-    lines = lines_1
+    rv = lines_1
 
     lines_4 = format_string_2(lines_4)
 
-    rv = format_string(lines) + lines_4
+    # rv = format_string(lines) + lines_4
 
     pos_tweets = []
     neg_tweets = []
