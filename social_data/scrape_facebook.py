@@ -8,13 +8,10 @@ app_id = "1491244067763247"
 app_secret = "c4039a18ee0c2e4fd9da56f13454012e"
 
 # CANNOT BE HARDCODED.
-access_token = "CAACEdEose0cBAAEG3kUsxrnANZALjL\
-				1EqZClE5dLxsz4FF9WwZAWsMp8O0u1N\
-				ZA19gqDacZBXUoHw2OD0sIMRiNGZAH5\
-				BhCOlgfJFYRuWuqYfVkNULbGGf01NFn\
-				k9KyJxnTJNePw3Hvd9SnwNJ6IgfT2bm\
-				qBmvF2TSlfgsALb4O8k6ZBtZAPu5e3i\
-				iOKszK85i5jKkOebKxZB7gZDZD"
+access_token = "CAACEdEose0cBABX5vI1qIpNTBSb0z2i6mzxJBWDZCrTe6Y9k44nAX5w1ip1\
+				EMz8bvDqV2fnoGclRvtADvxHSmhxdQNn8kjidpgAOzuUxfOycZBrfLw8KdQ0\
+				ppvNme8f8kCCU6rQdI5AIBPhZA2Bde7V0jL9FZBluXkCVwSZCzYWWQZBrUBw\
+				994bQzZB2BBnQpFILbY3FbkJFgZDZD"
 
 graph = GraphAPI(access_token)
 
