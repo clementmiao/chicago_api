@@ -81,23 +81,7 @@ DATABASES = {
      }
  }
 
-<<<<<<< HEAD
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'chicago_api',
-#         'USER': 'clementmiao',
-#     }
-# }
-=======
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'chicago_api',
-#        'USER': 'clementmiao',
-#    }
-#}
->>>>>>> 3bed10794bb5869810d631a13c38c0e33ea08e2d
+z
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
