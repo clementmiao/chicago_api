@@ -112,7 +112,7 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-# DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
 
 # DATABASES = {'default': dj_database_url.config()}
 # DATABASES = {'default': dj_database_url.config(default='postgres://pgddcfmpztaggy:55_6JhtdTBVJWhUdE5Dxu99lyb@ec2-54-197-227-238.compute-1.amazonaws.com:5432/d3hqtt3qjo674c')}
