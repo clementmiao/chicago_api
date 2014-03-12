@@ -1,15 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from social_data.models import Service, Post
+from os import path
 
 def home(request):
-    return HttpResponse("Hello world")
+    BASE_DIR = path.dirname(__file__)
+    rel_path = 'icons/doc.kml'
+    file_path = path.join(BASE_DIR, rel_path)
+    data_list = []
+    s = Service.objects.get(name="twitter")
+    posts = Post.objects.filter(service= s )
+    for p in posts:
+        dictionary = {}
+        dictionary['latitude'] = p.latitude
+        dictionary['longitude'] = p.longitude
+        dictionary['title'] = p.text
+        dictionary['icon'] = p.service.icon
+        dictionary['image'] = p.image
+        data_list.append(dictionary)
 
-# def icon(request, service_id):
-#     try:
-#         icon = Service.objects.get(id=service_id)
+    info = {
+        'html_id':"map-canvas",
+        'latitude': 41.8954,
+        'longitude': -87.6243,
+        'zoom': 10,
+        'map_type': "ROADMAP",
+        'm_data':data_list,
+        'kml': file_path
+    }
+    return render(request, 'social_data/base.html', info)
 
-#     c = {
-#         'icon': icon,        
-#     }
 
-#     return render(request, 'social_data/icon.html', c) 
