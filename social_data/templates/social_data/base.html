@@ -13,7 +13,7 @@
         }
     </style>
     
-    <body>
+    <body onload="initialize()">
         <h1>Twitter Sentiment Overlay</h1>
         <!-- <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2>  -->
         <div id="panel">
@@ -21,6 +21,7 @@
       <!-- <button onclick="changeGradient()">Change gradient</button> -->
       <!-- <button onclick="changeRadius()">Change radius</button> -->
       <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+      <button onclick="sentiment();">Run Natural Language Processing</button>
         </div>
         <div id="map-canvas" style="width:1700px;height:750px;"></div>
         {% load gmap_sentiment %}

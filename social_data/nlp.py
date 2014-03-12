@@ -161,14 +161,14 @@ def intermediary():
 
     # rv = format_string(lines)
     
-    rv = format_string(lines_2)
-    # rv = kaggle
+    # rv = format_string(lines_2)
+    rv = kaggle
 
     length = len(rv)
 
-    cutoff = length * 1/100
+    # cutoff = length * 1/100
 
-    rv = rv[:cutoff]
+    # rv = rv[:cutoff]
 
     # rv = rv + kaggle
 
@@ -269,14 +269,17 @@ def save_current():
 def process_tweets():
     s = Service.objects.get(name="twitter")
     tweets_list = Post.objects.filter(service=s)
-    tup = get_corpus()
+    # tup = get_corpus()
+    BASE_DIR = path.dirname(__file__)
+    rel_path = 'my_classifier.pickle'
+    file_path = path.join(BASE_DIR, rel_path)
+    f = open(file_path)
+    tup = pickle.load(f)
+    f.close()
     classifier = tup[0]
     wordlist = tup[1]
     # classifier = process()
     for x in tweets_list:
         result = assess_tweet(x.text, classifier, wordlist)
-        if result != 'positive':
-            print x.text
-            print result
-        # senti = Sentiment(post = x, sentiment = result)
-        # senti.save()    
+        senti = Sentiment(post = x, sentiment = result)
+        senti.save()    
