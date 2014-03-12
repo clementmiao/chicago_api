@@ -54,7 +54,7 @@ def scrape_facebook():
 			date = d0 + timedelta(seconds = x['timestamp'])
 			post = Post(service = s, latitude = x['latitude'],\
 				longitude = x['longitude'], identifier = x['id'],\
-				 text = x['message'], link = "", image= "",\
+				 text = x['message'][:256], link = "", image= "",\
 				  timestamp = date)
 			post.save()
 
