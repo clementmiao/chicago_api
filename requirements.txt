@@ -14,4 +14,3 @@ facepy==0.9.0
 =======
 python-instagram==0.8.0
 facepy==0.9.0
->>>>>>> e8b25ea855f0fa7de558e1bce5ba58fdbfd4e77b
