@@ -2,25 +2,30 @@ from social_data.models import Service, Post
 from facepy import GraphAPI
 from datetime import datetime, timedelta
 import math
+import webbrowser
+import requests
 
 
 app_id = "1491244067763247"
 app_secret = "c4039a18ee0c2e4fd9da56f13454012e"
 
-# CANNOT BE HARDCODED.
-access_token = "CAACEdEose0cBABX5vI1qIpNTBSb0z2i6mzxJBWDZCrTe6Y9k44nAX5w1ip1\
-				EMz8bvDqV2fnoGclRvtADvxHSmhxdQNn8kjidpgAOzuUxfOycZBrfLw8KdQ0\
-				ppvNme8f8kCCU6rQdI5AIBPhZA2Bde7V0jL9FZBluXkCVwSZCzYWWQZBrUBw\
-				994bQzZB2BBnQpFILbY3FbkJFgZDZD"
-
-graph = GraphAPI(access_token)
+access_token="CAACEdEose0cBANb9UE4b7bwxUm4724FfjGwBpAKSCLWZCD4NPUZAVX\
+			XWJZCqUq42OFAYDbeBMQNSYBZBf8j7Txk4SboqYu2sSNojZCZAP5J1M2g\
+			PBDHrSC2dkWbuvEEhkyOaMLsZBE5VeZBjQz2bOh1arAbBWTUhdhcJLKFn\
+			GwWUD50Qvw2Y7ihD7SMOmZCRlMyYNxYX3DZAad8AZDZD"
 
 
 
 
-def scrape_facebook():
 
-	#Select ids of users who are friends with me
+def facebook(lat,lon,radius):
+
+	
+
+	graph = GraphAPI(access_token)
+
+
+	#Select ids of users who are friends with me, Sam Przezdziecki
 	ids = graph.fql("SELECT uid2 FROM friend WHERE uid1 = me()")
 	ids_data = ids['data']
 	ids = []
@@ -36,13 +41,13 @@ def scrape_facebook():
 		if len(posts) != 0:
 			location_posts.extend(posts)
 
-	#Grab posts that are within 60 km of (41.8954,-87.6243)
+	#Grab posts that are within 60 km of (41.8954,-87.6243) -- i.e., the center of Chicago
 	filtered_posts = []
 	for n in range(len(location_posts)):
 		lat1 = location_posts[n]['latitude']
 		lon1 = location_posts[n]['longitude']
 		if(lat1 != None and lon1 != None):
-			if (distance_in_km(float(lat1),float(lon1),41.8954,-87.6243) < 60):
+			if (distance_in_km(float(lat1),float(lon1),lat,lon) < radius):
 				filtered_posts.append(location_posts[n])
 	
 	#Save posts in database
@@ -57,6 +62,7 @@ def scrape_facebook():
 				 text = x['message'][:256], link = "", image= "",\
 				  timestamp = date)
 			post.save()
+	print "Facebook scraped."
 
 
 

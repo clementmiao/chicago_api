@@ -41,7 +41,6 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'templates'), 
-    # os.path.join(BASE_DIR, '/chicago_api/templates'),
 )
 
 INSTALLED_APPS = (
@@ -54,7 +53,6 @@ INSTALLED_APPS = (
     'gmap',
     'chicago_api',
     'social_data',
-    # 'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,7 +83,7 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'chicago_api',
-#         'USER': 'clementmiao',
+#         'USER': 'samprzezdziecki',
 #     }
 # }
 
@@ -112,10 +110,8 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-# DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()p
 
-# DATABASES = {'default': dj_database_url.config()}
-# DATABASES = {'default': dj_database_url.config(default='postgres://pgddcfmpztaggy:55_6JhtdTBVJWhUdE5Dxu99lyb@ec2-54-197-227-238.compute-1.amazonaws.com:5432/d3hqtt3qjo674c')}
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
