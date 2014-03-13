@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Twitter Sentiment Overlay</title>
+    </head>
+
+    <style>
+        body {
+            text-align: center;
+            /*background: url("http://www.windows7wallpapers.com/wallpapers/Minimal-Black-Wallpaper.png");*/
+            background: white;
+            color: black;
+            font-family: helvetica;
+        }
+    </style>
+    
+    <body onload="initialize()">
+        <h1>Twitter Sentiment Overlay</h1>
+        <!-- <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2>  -->
+        <div id="panel">
+      <!-- <button onclick="toggleHeatmap()">Toggle Heatmap</button> -->
+      <!-- <button onclick="changeGradient()">Change gradient</button> -->
+      <!-- <button onclick="changeRadius()">Change radius</button> -->
+      <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+      <button onclick="sentiment();">Run Natural Language Processing</button>
+        </div>
+        <div id="map-canvas" style="width:1700px;height:750px;"></div>
+        {% load gmap_sentiment %}
+        {% gmap_sentiment html_id latitude longitude kml zoom=zoom data=m_data map_type=map_type %}
+    </body>
+</html>

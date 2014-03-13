@@ -2,9 +2,9 @@ from django import template
 
 register = template.Library()
 
-@register.inclusion_tag('gmap/map.html')
 @register.inclusion_tag('gmap/map_sentiment.html')
-def gmap(html_id, latitude, longitude, **kwargs):
+
+def gmap_sentiment(html_id, latitude, longitude, kml, **kwargs):
     """
     {% gmap <html_id> <latitude> <longitude> [zoom=<zoom>] [map_type=<map_type>]
     [data=[<map_data>] %}
@@ -17,11 +17,11 @@ def gmap(html_id, latitude, longitude, **kwargs):
         'latitude': latitude,
         'longitude': longitude,
         'zoom': zoom,
-        'map_type': map_type
+        'map_type': map_type,
+        'kml': kml
     }
 
     if m_data:
         data['data'] = m_data
 
     return data
-
