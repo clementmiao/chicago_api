@@ -12,8 +12,8 @@ api = InstagramAPI(client_id = client_id, client_secret = client_secret)
 #41.8954, -87.6243, Downtown Chicago Latitude and Longitude
 
 #Finds and stores in the database instagram posts within a 5 km radius of point passed in
-def insta(la,lo):        
-    l = api.media_search(distance = 5000, lat = la, lng =lo, access_token = access_token) # Get data from Instagram
+def insta(la,lo, rad):        
+    l = api.media_search(distance = rad, lat = la, lng =lo, access_token = access_token) # Get data from Instagram
     s = Service.objects.get(name="instagram")
     for x in l: #pull relevent data
         t = api.media(x.id)        
@@ -29,9 +29,14 @@ def insta(la,lo):
 
 ##Because the instagram search function only allows for a 5 km radius for searching, 
 #for anything bigger than this we need to call the function multiple times and make overlapping circles 
-#takes a lattitude, longitude, and a radius in meters           
-def move(lat, lon, radius):
-    steps = int((round(radius/5000))) #number of calls in each direction to get the desired radius
-    for i in range(-1*steps,steps+1):
-        for j in range(-1*steps,steps+1):
-            insta(float(lat + (i/float(steps))*radius/111000.0),lon + float(float((j/float(steps))*radius/85000.0)))
+#takes a lattitude, longitude, and a radius in kilometers           
+def instagram(lat, lon, radius):
+    rad = float(radius*1000.0) #turns it into meters
+    steps = int((round(rad/5000.0))) #number of calls in each direction to get the desired radius
+
+    if(steps == 0):
+        insta(lat,lon, rad)
+    else:
+        for i in range(-1*steps,steps+1):
+            for j in range(-1*steps,steps+1):
+                insta(float(lat + (i/float(steps))*rad/111000.0),lon + float(float((j/float(steps))*rad/85000.0)),rad)

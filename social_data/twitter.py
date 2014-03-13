@@ -40,7 +40,6 @@ def twitter(lat,lon,radius): #lat,lon floats; radius in kms
         i = 0
         while i < num_scrapes:
             l = api.search(geocode = "%d,%d,%dkm" %(lat,lon,radius), count = 10000)
-            # list = api.home_timeline()
             s = Service.objects.get(name="twitter")
             for x in l:
                 if x.geo != None:
@@ -51,6 +50,5 @@ def twitter(lat,lon,radius): #lat,lon floats; radius in kms
                         post = Post(service = s, latitude = lat, longitude = lon, identifier = x.id, text = x.text, link = "", image = "", timestamp = x.created_at)
                         post.save()
             i += 1
-            # print "Done for now"
 
     
