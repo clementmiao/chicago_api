@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from social_data.models import Service, Post
-from social_data import twitter
 
 def home(request):
-    # t = twitter.twitter()
     data_list = []
     for p in Post.objects.all():
         dictionary = {}

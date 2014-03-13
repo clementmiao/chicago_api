@@ -81,6 +81,13 @@ DATABASES = {
      }
  }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'chicago_api',
+#         'USER': 'clementmiao',
+#     }
+# }
 
 
 # Internationalization
