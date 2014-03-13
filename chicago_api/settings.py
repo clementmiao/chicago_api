@@ -79,13 +79,13 @@ DATABASES = {
      }
  }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'chicago_api',
-#         'USER': 'clementmiao',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'chicago_api',
+        'USER': 'clementmiao',
+    }
+}
 
 
 # Internationalization
@@ -110,7 +110,7 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()p
 
 
 
