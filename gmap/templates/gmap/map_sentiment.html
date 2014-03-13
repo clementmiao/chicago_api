@@ -15,7 +15,6 @@
 
         var myParser;
         
-        // window.onload = function() {
         function initialize() {
             var lat_long = new google.maps.LatLng({{latitude}}, {{longitude}});
             var mapOptions = {
@@ -32,49 +31,6 @@
             myParser.parse(kml);    
 
             heat_data = []
-            {% if data %}
-
-                function createMarker(latitude, longitude, string, icon, image) {
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(latitude, longitude),
-                        map: map,
-                        icon: icon,
-                        animation: google.maps.Animation.DROP,
-                    })
-                    var contentString = string;
-
-                    if (image != "") {
-                        contentString = '<IMG BORDER="0" ALIGN="Left" SRC=' + image + '>' + contentString
-                    }
-
-                    var infoWindow = new google.maps.InfoWindow({
-                        content: contentString
-                    });
-
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infoWindow.open(map,marker);
-                    }); 
-                }
-
-                
-
-                // myParser.parse(kml);
-
-                
-                // {% for p in data %}
-                
-                //     createMarker({{p.latitude}},{{p.longitude}}, "{{p.title|escapejs}}", "{{p.icon}}", "{{p.image}}");
-
-                //     var item = new google.maps.LatLng({{p.latitude}}, {{p.longitude}});
-                //     heat_data.push(item);
-
-                // {% endfor %}
-
-                // var pointArray = new google.maps.MVCArray(heat_data);
-
-
-            
-            {% endif %}
 
             
         }
@@ -93,9 +49,6 @@
                             if (sentiment == "positive") {
                                 counter = counter + 1
                             }
-                            // polygon.setOptions({fillColor: "blue", fillOpacity: 0.20});
-                            // window.alert("hello world");
-
                         }
 
                     
@@ -120,23 +73,6 @@
                             polygon.setOptions({fillColor: "red", fillOpacity: 0.30})
                         }
                     }
-
-                    // {% for p in data %}
-                    //     var latitude = {{p.latitude}}
-                    //     var longitude = {{p.longitude}}
-                    //     var sentiment = "{{p.sentiment}}"
-
-                    //     var position = new google.maps.LatLng(latitude, longitude)
-
-                    //     if (google.maps.geometry.poly.containsLocation(position, polygon)) {
-
-                    //         polygon.setOptions({fillColor: "blue", fillOpacity: 0.30});
-                    //         // window.alert("hello world");
-
-                    //     }
-                    //     // polygon.setMap(map);
-
-                    // {% endfor %}
         }
 
         function sentiment(){
@@ -146,9 +82,6 @@
                 for (var i = 0; i < arrayLength; i++) {
                     var polygon = myParser.docs[0].gpolygons[i];
                     getSentiment(polygon);  
-                    // polygon.setMap(null);
-                    // polygon.setOptions({fillColor: "blue", fillOpacity: 0.20})
-                    // polygon.setMap(map);
                 }
 
 
