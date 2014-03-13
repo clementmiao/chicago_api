@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^gmap/', include('gmap.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^social_data/',include('social_data.urls')),
+    url(r'^social_data/',include('social_data.urls'), name='social-data'),
 )

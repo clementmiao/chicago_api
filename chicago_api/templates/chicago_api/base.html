@@ -1,29 +1,56 @@
+<!DOCTYPE html>
+
 <html>
     <head>
         <title>Chicago Location Mapping</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     </head>
 
     <style>
         body {
             text-align: center;
-            /*background: url("http://www.windows7wallpapers.com/wallpapers/Minimal-Black-Wallpaper.png");*/
             background: white;
             color: black;
             font-family: helvetica;
+            padding-top: 40px; 
         }
     </style>
     
     <body>
-        <h1>Chicago Location Mapping</h1>
-        <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2> 
+        <nav class="navbar-wrapper navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">Chicago Location Mapping</a>
+          </div>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'social-home' %}">NLP Analysis</a>
+          </div>
+
+</nav>
+        <!-- <h1>Chicago Location Mapping</h1> -->
+        <!-- <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2>  -->
+        
+        <!-- <button><a href="{% url 'home' %}">Home</a></button> -->
+        <!-- <button><a href="{% url 'social-home' %}">Natural Language Analysis</a></button> -->
         <div id="panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <button onclick="toggleHeatmap()" class="btn btn-primary">Toggle Heatmap</button>
+      <button onclick="changeGradient()" class="btn btn-primary">Change gradient</button>
+      <button onclick="changeRadius()" class="btn btn-primary">Change radius</button>
+      <!-- <button onclick="sentiment();" class="btn btn-lg btn-success">Run Natural Language Processing</button> -->
+            </div>
+        </div>    
+      
       <!-- <button onclick="changeOpacity()">Change opacity</button> -->
         </div>
         <div id="map-canvas" style="width:1700px;height:750px;"></div>
         {%load gmap %}
         {% gmap html_id latitude longitude zoom=zoom data=m_data map_type=map_type %}
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

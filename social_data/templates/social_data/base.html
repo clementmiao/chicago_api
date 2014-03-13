@@ -1,27 +1,41 @@
+<!DOCTYPE html>
+
 <html>
     <head>
-        <title>Twitter Sentiment Overlay</title>
+        <title>Chicago Location Mapping</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     </head>
 
     <style>
+
         body {
             text-align: center;
-            /*background: url("http://www.windows7wallpapers.com/wallpapers/Minimal-Black-Wallpaper.png");*/
             background: white;
             color: black;
             font-family: helvetica;
+            padding-top: 40px; 
         }
     </style>
     
-    <body onload="initialize()">
-        <h1>Twitter Sentiment Overlay</h1>
+    <body>
+        <nav class="navbar-wrapper navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">Chicago Location Mapping</a>
+          </div>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'social-home' %}">NLP Analysis</a>
+          </div>
+
+</nav>
+        <!-- <h1>Chicago Location Mapping</h1> -->
         <!-- <h2>By Charlie Fisher, Clement Miao and Sam Przezdziecki</h2>  -->
-        <div id="panel">
-      <!-- <button onclick="toggleHeatmap()">Toggle Heatmap</button> -->
-      <!-- <button onclick="changeGradient()">Change gradient</button> -->
-      <!-- <button onclick="changeRadius()">Change radius</button> -->
-      <!-- <button onclick="changeOpacity()">Change opacity</button> -->
-      <button onclick="sentiment();">Run Natural Language Processing</button>
+        <!-- <a href="{% url 'home' %}">Home</a> | <a href="{% url 'social-home' %}">Natural Language Analysis</a> -->
+        
+        <div class="container-fluid">
+            <div class="page-header">
+      <button onclick="sentiment();" class="btn btn-lg btn-success">Run Natural Language Processing</button>
+            </div>
         </div>
         <div id="map-canvas" style="width:1700px;height:750px;"></div>
         {% load gmap_sentiment %}
