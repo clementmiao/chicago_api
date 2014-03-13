@@ -9,8 +9,15 @@
 
         var map;
 
-        var heat_data;
+        var markers = [];
+
+        var facebook = [];
+
+        var instagram = [];
+
+        var twitter = [];
         
+        var heat_data;
         // window.onload = function() {
         function initialize() {
             var lat_long = new google.maps.LatLng({{latitude}}, {{longitude}});
@@ -23,7 +30,6 @@
             map = new google.maps.Map(document.getElementById("{{ html_id }}"), mapOptions);
 
             
-
             heat_data = []
             {% if data %}
 
@@ -32,7 +38,6 @@
                         position: new google.maps.LatLng(latitude, longitude),
                         map: map,
                         icon: icon,
-                        // animation: google.maps.Animation.DROP,
                     })
                     var contentString = string;
 
@@ -44,6 +49,15 @@
                         content: contentString
                     });
 
+                    markers.push(marker);
+                    if (icon == "/social_data/icons/facebook.png") {
+                        facebook.push(marker);
+                    } else if (icon == "/social_data/icons/instagram.png") {
+                        instagram.push(marker);
+                    } else if (icon == "/social_data/icons/twitter.png") {
+                        twitter.push(marker);
+                    }
+
                     google.maps.event.addListener(marker, 'click', function() {
                         infoWindow.open(map,marker);
                     }); 
@@ -54,6 +68,7 @@
                     createMarker({{p.latitude}},{{p.longitude}}, "{{p.title|escapejs}}", "{{p.icon}}", "{{p.image}}");
 
                     var item = new google.maps.LatLng({{p.latitude}}, {{p.longitude}});
+
                     heat_data.push(item);
 
                 {% endfor %}
@@ -92,6 +107,50 @@
             ]
             
   heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+}
+
+        function setAllMap() {
+            for (var i = 0; i < markers.length; i++) {
+                var m = markers[i]
+            if (m.map == null) {
+                m.setMap(map);    
+            } else {
+                m.setMap(null);
+            }
+            
+  } 
+        }
+
+        function setFbMap() {
+          for (var i = 0; i < facebook.length; i++) {
+            var m = facebook[i]
+            if (m.map == null) {
+                m.setMap(map);    
+            } else {
+                m.setMap(null);
+            }
+        }
+    }
+
+        function setTwitterMap() {
+            for (var i = 0; i < twitter.length; i++) {
+                var m = twitter[i]
+            if (m.map == null) {
+                m.setMap(map);    
+            } else {
+                m.setMap(null);
+            }
+        }
+}
+        function setInstagramMap() {
+            for (var i = 0; i < instagram.length; i++) {
+                var m = instagram[i]
+            if (m.map == null) {
+                m.setMap(map);    
+            } else {
+                m.setMap(null);
+            }
+        }
 }
 
 function changeRadius() {
