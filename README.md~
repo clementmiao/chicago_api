@@ -1,0 +1,25 @@
+Chicago Location Mapping
+by Clement Miao, Sam Przezdziecki, and Charlie Fisher
+
+link to website: http://obscure-caverns-2114.herokuapp.com/
+
+Chicago Location Mapping takes data from Twitter, Instagram, and Facebook and overlays this data on a google map.
+
+For the google map base, the code is in the gmap folder. The templatetags folder contains the basic maps that we use, and the templates folder contains the javascript code for displaying the markers and posts themselves in map.html, and the javascript for the sentiment analysis in map_sentiment.html
+
+The data magagement files are in the social_data folder. Our website currently has posts centered around Chicago, but to get data around any lattitude, longitude point, do the following:
+
+For Twitter:
+    From the command line, navigate to the chicago_api folder and run: python manage.py shell
+    Once in the shell type: from social_data.twitter import twitter
+    Then type: twitter(lat, lon, radius) where lat and lng are the latitude and longitude of the desired point, and radius is the desired radius in kilometers
+ 
+ For Instagram:
+    From the command line, navigate to the chicago_api folder and run: python manage.py shell
+    Once in the shell type: from social_data.insta import instagram
+    Then type: instagram(lat, lon, radius) where lat and lng are the latitude and longitude of the desired point, and radius is the desired radius in kilometers
+    
+For Facebook:
+    From the command line, navigate to the chicago_api folder and run: python manage.py shell
+    Once in the shell type: from social_data.facebook import facebook
+    Then type: facebook(lat, lon, radius) where lat and lng are the latitude and longitude of the desired point, and radius is the desired radius in kilometers
